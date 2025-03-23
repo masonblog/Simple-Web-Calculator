@@ -2,7 +2,7 @@
 
 [English](README.md) | [中文](README_CN.md)
 
-![Interface](Interface.png)
+![Interface](Interface_cn.png)
 
 ## 概述
 
