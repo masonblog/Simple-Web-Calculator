@@ -108,10 +108,10 @@ function applyFunction(func) {
                     Math.sin(parseFloat(lastNumber)) : 
                     Math.sin(parseFloat(lastNumber) * Math.PI / 180);
                 break;
-            // 其他函数实现...
+            // Other functions...
         }
         
-        // 替换表达式中的最后一个数字为计算结果
+        // Replace the last number in the expression with the calculation result
         replaceLastNumber(result);
         
     } catch (error) {
