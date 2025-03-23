@@ -2,6 +2,8 @@
 
 [English](README.md) | [中文](README_CN.md)
 
+![Interface](Interface.png)
+
 ## 概述
 
 这是一个基于Web技术开发的科学计算器，具有标准计算和科学计算功能，支持明暗主题切换，提供直观友好的用户界面。计算器采用响应式设计，可在不同设备上良好显示。

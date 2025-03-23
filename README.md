@@ -2,6 +2,8 @@
 
 [English](README.md) | [中文](README_CN.md)
 
+![Interface](Interface.png)
+
 ## Overview
 
 This is a web-based scientific calculator features standard and scientific calculation, supports light and dark theme, and provides an intuitive and user-friendly interface. The calculator utilizes responsive design and displays well on various devices.
