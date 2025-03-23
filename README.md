@@ -4,24 +4,24 @@
 
 ## Overview
 
-This is a web-based scientific calculator developed using web technologies. It features both standard and scientific calculation functions, supports light and dark theme switching, and provides an intuitive and user-friendly interface. The calculator employs responsive design, ensuring proper display across various devices.
+This is a web-based scientific calculator features standard and scientific calculation, supports light and dark theme, and provides an intuitive and user-friendly interface. The calculator utilizes responsive design and displays well on various devices.
 
 ## Features
 
-### Basic Functions
-- **Standard Calculations**: Addition, subtraction, multiplication, division, percentage, and parentheses operations
-- **Scientific Calculations**: Trigonometric functions, logarithms, square roots, power operations, factorials
-- **Constants Support**: π (Pi), e (Euler's number)
-- **Angle/Radian Toggle**: Switch between degree and radian modes
-- **Real-time Calculation**: Displays calculation results in real-time as expressions are entered
-- **History Record**: Shows the previous calculation expression
-- **Copy Function**: One-click copying of calculation results to clipboard
-- **Theme Switching**: Supports both light and dark theme modes
+### Features
+- **Standard Calculations**: Addition, subtraction, multiplication, division, percentages, and parentheses
+- **Scientific Calculations**: Trigonometric functions, logarithms, square roots, exponentiation, and factorials
+- **Constant Support**: π (Pi), e (Euler's number)
+- **Angle/Radian Toggle**: Supports switching between degree and radian modes
+- **Real-time Calculation**: Displays calculation results in real-time as you type expressions
+- **History**: Displays the expression from the previous calculation
+- **Copy Function**: One-click copy of calculation results to the clipboard
+- **Theme Switching**: Supports light and dark theme modes
 - **Keyboard Support**: Supports keyboard input for calculations
 
-## Usage Instructions
+## Usage
 
-### Interface Layout
+### Interface
 
 The calculator interface is divided into the following sections:
 1. **Top Title Bar**: Displays the calculator name and theme toggle button
@@ -29,7 +29,7 @@ The calculator interface is divided into the following sections:
 3. **Scientific Function Area**: Contains buttons related to scientific calculations
 4. **Standard Calculation Area**: Contains number buttons and basic operator buttons
 
-### Basic Operations
+### Operations
 
 - **Enter Numbers**: Click number buttons or use keyboard input
 - **Basic Operations**: Click +, -, ×, ÷ buttons or use keyboard input +, -, *, /
@@ -38,7 +38,7 @@ The calculator interface is divided into the following sections:
 - **Calculate Result**: Click the = button or press the Enter key
 - **Copy Result**: Click the copy button in the bottom right of the display area
 
-### Scientific Calculation Functions
+### Scientific Calculation
 
 - **Trigonometric Functions**: Click sin, cos, tan buttons to calculate the trigonometric function value of the current input
 - **Logarithmic Functions**:
@@ -91,3 +91,105 @@ function evaluateExpression(expr) {
         throw new Error('Calculation Error');
     }
 }
+```
+
+#### Scientific Function Implementation
+The scientific calculator supports various mathematical functions and performs appropriate conversions based on the current angle/radian mode.
+
+```javascript
+function applyFunction(func) {
+    try {
+        let result;
+        const lastNumber = extractLastNumber();
+        
+        switch (func) {
+            case 'sin':
+                result = isInRadianMode ? 
+                    Math.sin(parseFloat(lastNumber)) : 
+                    Math.sin(parseFloat(lastNumber) * Math.PI / 180);
+                break;
+            // 其他函数实现...
+        }
+        
+        // 替换表达式中的最后一个数字为计算结果
+        replaceLastNumber(result);
+        
+    } catch (error) {
+        updateResult('错误');
+    }
+}
+```
+
+#### Theme Switching
+The calculator supports both light and dark themes, using CSS variables for theme switching and localStorage to save the user's theme preference.
+
+```javascript
+function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+    
+    if (document.body.classList.contains('dark-mode')) {
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        localStorage.setItem('darkMode', 'true');
+    } else {
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        localStorage.setItem('darkMode', 'false');
+    }
+}
+```
+
+## Responsive Design
+The calculator features a responsive design, ensuring it displays well on devices of various sizes.
+
+```css
+@media (max-width: 480px) {
+    .calculator-container {
+        max-width: 100%;
+    }
+    
+    .btn {
+        padding: 12px 0;
+        font-size: 1rem;
+    }
+    
+    /* 其他响应式样式... */
+}
+```
+
+## Usage Examples
+
+### Basic Calculation
+1. Input: `2 + 3 * 4`
+2. Result: `14`
+
+### Scientific Calculation
+1. Trigonometric Function: Enter `30`, click the `sin` button (in degree mode)
+   - Result: `0.5`
+2. Logarithmic Calculation: Enter `100`, click the `log` button
+   - Result: `2`
+3. Exponentiation: Enter `2`, click the `x^y` button, enter `3`
+   - Result: `8`
+
+## Notes
+
+- The calculator displays "ERROR" when an invalid expression is entered
+- The angle/radian mode affects the results of trigonometric functions
+- The copy function requires browser support for Clipboard API
+
+## Browser Compatibility
+
+The calculator is compatible with all modern browsers, including:
+- Google Chrome
+- Mozilla Firefox
+- Microsoft Edge
+- Safari
+
+## Local Run
+
+1. Clone or download the project code
+2. Open `index.html` file with a browser
+3. Or run the project using a local server (e.g., Python's http.server)
+
+   ```
+   python -m http.server 8000
+   ```
+   Then visit: http://localhost:8000/
