@@ -151,7 +151,7 @@ The calculator features a responsive design, ensuring it displays well on device
         font-size: 1rem;
     }
     
-    /* 其他响应式样式... */
+    /* Other responsive styles... */
 }
 ```
 
